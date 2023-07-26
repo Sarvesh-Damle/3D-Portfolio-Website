@@ -23,6 +23,9 @@ import {
   jobit,
   tripguide,
   threejs,
+  food_delivery_website,
+  portfolio_website,
+  react_projects_website,
 } from "../assets";
 
 export const navLinks = [
@@ -31,30 +34,30 @@ export const navLinks = [
     title: "About",
   },
   {
-    id: "work",
-    title: "Work",
+    id: "works",
+    title: "Projects",
   },
   {
-    id: "contact",
+    id: "about",
     title: "Contact",
   },
 ];
 
 const services = [
   {
-    title: "Web Developer",
+    title: "Web Development",
     icon: web,
   },
   {
-    title: "React Native Developer",
+    title: "React & Front-end Development",
     icon: mobile,
   },
   {
-    title: "Backend Developer",
+    title: "Git & Linux",
     icon: backend,
   },
   {
-    title: "Content Creator",
+    title: "Node Developer",
     icon: creator,
   },
 ];
@@ -72,18 +75,18 @@ const technologies = [
     name: "JavaScript",
     icon: javascript,
   },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
+  // {
+  //   name: "TypeScript",
+  //   icon: typescript,
+  // },
   {
     name: "React JS",
     icon: reactjs,
   },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
+  // {
+  //   name: "Redux Toolkit",
+  //   icon: redux,
+  // },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -104,14 +107,14 @@ const technologies = [
     name: "git",
     icon: git,
   },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
+  // {
+  //   name: "figma",
+  //   icon: figma,
+  // },
+  // {
+  //   name: "docker",
+  //   icon: docker,
+  // },
 ];
 
 const experiences = [
@@ -198,58 +201,16 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "5-React-Projects",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Developed and deployed a multifaceted website featuring a collection of dynamic projects. The website encompasses a user- friendly To-do App for streamlined task management, an engaging Quiz App to challenge and entertain users, and a Real-Time Space News section powered by the spaceflight-news API, offering up-to- the-minute updates on space exploration",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: carrent,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: jobit,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
+        name: "apis",
         color: "green-text-gradient",
       },
       {
@@ -257,8 +218,50 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: react_projects_website,
+    source_code_link: "https://github.com/Sarvesh-Damle/5-React-Projects.git",
+  },
+  {
+    name: "Food Delivery Website",
+    description:
+      "Designed and developed a dynamic food delivery website using pure HTML and CSS, showcasing a seamless user interface and intuitive user experience. Implemented modern design principles to ensure a visually appealing and responsive site, enabling customers to effortlessly browse menus and place orders",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css",
+        color: "green-text-gradient",
+      },
+      {
+        name: "web-development",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: food_delivery_website,
+    source_code_link: "https://github.com/Sarvesh-Damle/Food_Delivery_Website.git",
+  },
+  {
+    name: "3D Portfolio Website",
+    description:
+      "Developed and Deployed an immersive 3D portfolio website utilizing React, featuring an intricately designed 3D model and captivating animations. Showcased creative projects and achievements in a visually stunning and interactive manner, enhancing user engagement and demonstrating a passion for innovation and front-end development expertise. ",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "three.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind-css",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: portfolio_website,
+    source_code_link: "https://github.com/Sarvesh-Damle/3D-Portfolio-Website.git",
   },
 ];
 

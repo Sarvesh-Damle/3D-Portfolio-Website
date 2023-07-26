@@ -30,6 +30,10 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import food_delivery_website from "./food_delivery_website.png";
+import portfolio_website from "./portfolio_website.png";
+import react_projects_website from "./react_projects_website.png"
+
 export {
   logo,
   backend,
@@ -59,4 +63,7 @@ export {
   carrent,
   jobit,
   tripguide,
+  food_delivery_website,
+  portfolio_website,
+  react_projects_website,
 };
