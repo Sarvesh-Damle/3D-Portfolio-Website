@@ -32,7 +32,7 @@ import tripguide from "./tripguide.png";
 
 import food_delivery_website from "./food_delivery_website.png";
 import portfolio_website from "./portfolio_website.png";
-import react_projects_website from "./react_projects_website.png"
+import react_projects_website from "./react_projects_website.png";
 
 export {
   logo,
