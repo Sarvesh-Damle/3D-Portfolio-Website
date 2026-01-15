@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { validateContactForm } from "../utils/validators";
 
 const Contact = () => {
   const formRef = useRef();
@@ -16,6 +17,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { target } = e;
@@ -25,10 +27,29 @@ const Contact = () => {
       ...form,
       [name]: value,
     });
+
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate form before submission
+    const validation = validateContactForm(form);
+
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      return;
+    }
+
+    // Clear any previous errors
+    setErrors({});
     setLoading(true);
 
     emailjs
@@ -37,9 +58,9 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "JavaScript Mastery",
+          to_name: import.meta.env.VITE_APP_SITE_NAME,
           from_email: form.email,
-          to_email: "sujata@jsmastery.pro",
+          to_email: import.meta.env.VITE_APP_CONTACT_EMAIL,
           message: form.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
@@ -65,9 +86,7 @@ const Contact = () => {
   };
 
   return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
+    <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
@@ -75,11 +94,7 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
-        >
+        <form ref={formRef} onSubmit={handleSubmit} className='mt-12 flex flex-col gap-8'>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Name</span>
             <input
@@ -88,8 +103,11 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.name ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.name && <span className='text-red-500 text-sm mt-2'>{errors.name}</span>}
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your email</span>
@@ -99,8 +117,11 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.email ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.email && <span className='text-red-500 text-sm mt-2'>{errors.email}</span>}
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
@@ -110,8 +131,11 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder='What you want to say?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.message ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.message && <span className='text-red-500 text-sm mt-2'>{errors.message}</span>}
           </label>
 
           <button
