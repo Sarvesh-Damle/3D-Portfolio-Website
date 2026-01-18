@@ -1,16 +1,13 @@
 import {
   javascript,
-  // typescript,
   html,
   css,
   reactjs,
-  // redux,
+  redux,
   tailwind,
   nodejs,
   mongodb,
   git,
-  // figma,
-  // docker,
   threejs,
 } from "@assets";
 
@@ -27,18 +24,14 @@ export const technologies = [
     name: "JavaScript",
     icon: javascript,
   },
-  // {
-  //   name: "TypeScript",
-  //   icon: typescript,
-  // },
   {
     name: "React JS",
     icon: reactjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
+  {
+    name: "Redux Toolkit",
+    icon: redux,
+  },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -59,12 +52,4 @@ export const technologies = [
     name: "git",
     icon: git,
   },
-  // {
-  //   name: "figma",
-  //   icon: figma,
-  // },
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
 ];

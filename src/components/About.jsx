@@ -47,9 +47,11 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I&apos;m a software developer with experience in JavaScript and frameworks like React,
-        Node.js. I am a quick learner, good communicator and collaborator. I can create efficient,
-        responsive, scalable web applications, bringing UI to Life!
+        I am a Bachelor of Engineering in Information Technology with Honours in AI/ML. As an
+        Associate Software Engineer at CodeArray Technologies, I have experience in developing
+        subscription modules for React Native mobile apps and optimizing web applications using the
+        MERN stack. I am skilled in React, React Native, Node.js, and modern web technologies,
+        passionate about building efficient, responsive, and scalable solutions.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
