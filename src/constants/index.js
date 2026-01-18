@@ -4,11 +4,11 @@ import {
   creator,
   web,
   javascript,
-  typescript,
+  // typescript,
   html,
   css,
   reactjs,
-  redux,
+  // redux,
   tailwind,
   nodejs,
   mongodb,
@@ -16,14 +16,14 @@ import {
   figma,
   docker,
   meta,
-  starbucks,
-  tesla,
-  shopify,
+  // starbucks,
+  // tesla,
+  // shopify,
   carrent,
   jobit,
   tripguide,
   threejs,
-  food_delivery_website,
+  // food_delivery_website,
   portfolio_website,
   react_projects_website,
 } from "../assets";
@@ -34,30 +34,34 @@ export const navLinks = [
     title: "About",
   },
   {
+    id: "work",
+    title: "Experience",
+  },
+  {
     id: "works",
     title: "Projects",
   },
   {
-    id: "about",
+    id: "contact",
     title: "Contact",
   },
 ];
 
 const services = [
   {
-    title: "Web Development",
+    title: "Frontend Developer",
     icon: web,
   },
   {
-    title: "React & Front-end Development",
+    title: "React Native Developer",
     icon: mobile,
   },
   {
-    title: "Git & Linux",
+    title: "Backend Developer",
     icon: backend,
   },
   {
-    title: "Node Developer",
+    title: "Associate Software Engineer",
     icon: creator,
   },
 ];
@@ -75,18 +79,10 @@ const technologies = [
     name: "JavaScript",
     icon: javascript,
   },
-  // {
-  //   name: "TypeScript",
-  //   icon: typescript,
-  // },
   {
     name: "React JS",
     icon: reactjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -107,145 +103,95 @@ const technologies = [
     name: "git",
     icon: git,
   },
-  // {
-  //   name: "figma",
-  //   icon: figma,
-  // },
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
+  {
+    name: "figma",
+    icon: figma,
+  },
+  {
+    name: "docker",
+    icon: docker,
+  },
 ];
 
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
-    iconBg: "#383E56",
-    date: "March 2020 - April 2021",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
+    title: "Associate Software Engineer",
+    company_name: "CodeArray Technologies Pvt Ltd",
+    icon: meta, // Placeholder
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    date: "Sept 2024 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "EZOrder (React Native Mobile App): Developed subscription module pages with dynamic fee calculations, renewal adjustments, Razorpay integration, and subscription expiry messages. Resolved multiple bugs to enhance user experience.",
+      "GYB (Green Your Bills) Web App Development: Redesigned a vital bill search page, focusing on UI improvement and performance optimization. Modernized legacy code. Concurrent API calls for efficient processing.",
     ],
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-  },
-];
+const testimonials = [];
 
 const projects = [
   {
-    name: "5-React-Projects",
+    name: "Buddies - A Rental Platform",
     description:
-      "Developed and deployed a multifaceted website featuring a collection of dynamic projects. The website encompasses a user- friendly To-do App for streamlined task management, an engaging Quiz App to challenge and entertain users, and a Real-Time Space News section powered by the spaceflight-news API, offering up-to- the-minute updates on space exploration",
+      "A Rental Platform for finding and renting Flats/PGs/Hostels. Especially designed for students and working professionals. Allows property listing verification and direct owner interaction. Features Maps API integration.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "apis",
+        name: "mongodb",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "tailwind",
         color: "pink-text-gradient",
       },
     ],
-    image: react_projects_website,
-    source_code_link: "https://github.com/Sarvesh-Damle/5-React-Projects.git",
+    image: tripguide, // Placeholder
+    source_code_link: "https://github.com/Sarvesh-Damle",
+    deployed_url: "https://github.com/Sarvesh-Damle", // Placeholder
   },
   {
-    name: "Food Delivery Website",
+    name: "Green Your Bills",
     description:
-      "Designed and developed a dynamic food delivery website using pure HTML and CSS, showcasing a seamless user interface and intuitive user experience. Implemented modern design principles to ensure a visually appealing and responsive site, enabling customers to effortlessly browse menus and place orders",
+      "Hospital Management System combined with Bill Generation features. The platform primarily serves healthcare providers in handling patient management, insurance claims, billing, and reporting.",
     tags: [
       {
-        name: "html",
+        name: "asp.net",
         color: "blue-text-gradient",
       },
       {
-        name: "css",
+        name: "sql-server",
         color: "green-text-gradient",
       },
       {
-        name: "web-development",
+        name: "azure",
         color: "pink-text-gradient",
       },
     ],
-    image: food_delivery_website,
-    source_code_link: "https://github.com/Sarvesh-Damle/Food_Delivery_Website.git",
+    image: jobit, // Placeholder
+    source_code_link: "https://github.com/Sarvesh-Damle",
+    deployed_url: "https://github.com/Sarvesh-Damle",
+  },
+  {
+    name: "EZ Order",
+    description:
+      "Retail Management Multi-faceted App for Both Android and IOS. Implemented subscription modules and payment gateway integrations.",
+    tags: [
+      {
+        name: "react-native",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: carrent, // Placeholder
+    source_code_link: "https://github.com/Sarvesh-Damle",
+    deployed_url: "https://github.com/Sarvesh-Damle",
   },
   {
     name: "3D Portfolio Website",
     description:
-      "Developed and Deployed an immersive 3D portfolio website utilizing React, featuring an intricately designed 3D model and captivating animations. Showcased creative projects and achievements in a visually stunning and interactive manner, enhancing user engagement and demonstrating a passion for innovation and front-end development expertise. ",
+      "Developed and Deployed an immersive 3D portfolio website utilizing React, featuring an intricately designed 3D model and captivating animations. Showcased creative projects and achievements in a visually stunning and interactive manner.",
     tags: [
       {
         name: "react",
@@ -262,6 +208,25 @@ const projects = [
     ],
     image: portfolio_website,
     source_code_link: "https://github.com/Sarvesh-Damle/3D-Portfolio-Website.git",
+    deployed_url: "https://github.com/Sarvesh-Damle",
+  },
+  {
+    name: "Other Projects",
+    description:
+      "Includes Quizzie (Trivia Quiz App), To-do App, Real-Time Space News, Real-Time Video Game Prices and Deals, URL Shortener. Built with React, Node.js, and other modern technologies.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "green-text-gradient",
+      },
+    ],
+    image: react_projects_website,
+    source_code_link: "https://github.com/Sarvesh-Damle/5-React-Projects.git",
+    deployed_url: "https://github.com/Sarvesh-Damle",
   },
 ];
 
