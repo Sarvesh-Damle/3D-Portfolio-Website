@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { useScrollPosition } from "@hooks";
 
 describe("useScrollPosition Hook", () => {
@@ -51,7 +51,9 @@ describe("useScrollPosition Hook", () => {
     // Simulate scroll event
     window.scrollY = 150;
     const scrollListener = window.addEventListener.mock.calls[0][1];
-    scrollListener();
+    act(() => {
+      scrollListener();
+    });
 
     await waitFor(() => {
       expect(result.current).toBe(true);
@@ -64,7 +66,9 @@ describe("useScrollPosition Hook", () => {
 
     // Trigger initial scroll
     const scrollListener = window.addEventListener.mock.calls[0][1];
-    scrollListener();
+    act(() => {
+      scrollListener();
+    });
 
     await waitFor(() => {
       expect(result.current).toBe(true);
@@ -72,21 +76,25 @@ describe("useScrollPosition Hook", () => {
 
     // Scroll back up
     window.scrollY = 50;
-    scrollListener();
+    act(() => {
+      scrollListener();
+    });
 
     await waitFor(() => {
       expect(result.current).toBe(false);
     });
   });
 
-  it("uses default threshold of 100 when not provided", () => {
+  it("uses default threshold of 100 when not provided", async () => {
     window.scrollY = 150;
     const { result } = renderHook(() => useScrollPosition());
 
     const scrollListener = window.addEventListener.mock.calls[0][1];
-    scrollListener();
+    act(() => {
+      scrollListener();
+    });
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(result.current).toBe(true);
     });
   });
@@ -100,7 +108,9 @@ describe("useScrollPosition Hook", () => {
 
       const scrollListener =
         window.addEventListener.mock.calls[window.addEventListener.mock.calls.length - 1][1];
-      scrollListener();
+      act(() => {
+        scrollListener();
+      });
 
       await waitFor(() => {
         expect(result.current).toBe(true);

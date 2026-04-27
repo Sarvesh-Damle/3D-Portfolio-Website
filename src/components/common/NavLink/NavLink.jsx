@@ -37,8 +37,10 @@ const NavLink = ({ nav, active, onClick, variant = "desktop" }) => {
   const classes = variant === "mobile" ? mobileClasses : desktopClasses;
 
   return (
-    <li className={classes} onClick={onClick}>
-      <a href={`#${nav.id}`}>{nav.title}</a>
+    <li className={classes}>
+      <a href={`#${nav.id}`} onClick={onClick}>
+        {nav.title}
+      </a>
     </li>
   );
 };

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Card } from "@components/common/Card";
 
@@ -49,8 +49,12 @@ describe("Card Component", () => {
   });
 
   it("falls back to green-pink gradient for invalid gradient", () => {
+    const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
     const { container } = render(<Card gradient='invalid'>Content</Card>);
     const cardWrapper = container.firstChild;
     expect(cardWrapper).toHaveClass("green-pink-gradient");
+
+    consoleErrorSpy.mockRestore();
   });
 });

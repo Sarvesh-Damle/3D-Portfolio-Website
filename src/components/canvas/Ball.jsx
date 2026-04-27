@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
 import PropTypes from "prop-types";
 
+import { ErrorBoundary } from "@components/common";
 import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
@@ -33,14 +34,16 @@ Ball.propTypes = {
 
 const BallCanvas = ({ icon }) => {
   return (
-    <Canvas frameloop='demand' dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
+    <ErrorBoundary>
+      <Canvas frameloop='demand' dpr={[1, 2]}>
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls enableZoom={false} />
+          <Ball imgUrl={icon} />
+        </Suspense>
 
-      <Preload all />
-    </Canvas>
+        <Preload />
+      </Canvas>
+    </ErrorBoundary>
   );
 };
 

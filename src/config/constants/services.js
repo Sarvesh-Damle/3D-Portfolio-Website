@@ -2,19 +2,19 @@ import { mobile, backend, creator, web } from "@assets";
 
 export const services = [
   {
-    title: "Web Development",
+    title: "React Web Development",
     icon: web,
   },
   {
-    title: "React & Front-end Development",
+    title: "React Native Development",
     icon: mobile,
   },
   {
-    title: "Git & Linux",
+    title: "MERN Stack Development",
     icon: backend,
   },
   {
-    title: "Node Developer",
+    title: "Production Debugging",
     icon: creator,
   },
 ];

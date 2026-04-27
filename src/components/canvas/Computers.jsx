@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import PropTypes from "prop-types";
 
+import { ErrorBoundary } from "@components/common";
 import CanvasLoader from "../Loader";
 import { useMediaQuery } from "@hooks";
 
@@ -39,20 +40,20 @@ const ComputersCanvas = () => {
   const isMobile = useMediaQuery("(max-width: 500px)");
 
   return (
-    <Canvas
-      frameloop='demand'
-      shadows
-      dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
-        <Computers isMobile={isMobile} />
-      </Suspense>
+    <ErrorBoundary>
+      <Canvas frameloop='demand' shadows dpr={[1, 2]} camera={{ position: [20, 3, 5], fov: 25 }}>
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+          />
+          <Computers isMobile={isMobile} />
+        </Suspense>
 
-      <Preload all />
-    </Canvas>
+        <Preload />
+      </Canvas>
+    </ErrorBoundary>
   );
 };
 

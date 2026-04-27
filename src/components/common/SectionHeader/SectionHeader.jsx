@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { styles } from "../../../styles";
-import { textVariant } from "../../../utils/motion";
+
+import { styles } from "@styles/styles";
+import { textVariant } from "@utils/motion";
 
 /**
  * Standardized section header component with animation
