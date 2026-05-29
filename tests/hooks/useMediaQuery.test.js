@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { useMediaQuery } from "@hooks";
 
 describe("useMediaQuery Hook", () => {
@@ -51,7 +51,9 @@ describe("useMediaQuery Hook", () => {
 
     // Simulate media query change
     const changeListener = matchMediaMock.addEventListener.mock.calls[0][1];
-    changeListener({ matches: true });
+    act(() => {
+      changeListener({ matches: true });
+    });
 
     await waitFor(() => {
       expect(result.current).toBe(true);

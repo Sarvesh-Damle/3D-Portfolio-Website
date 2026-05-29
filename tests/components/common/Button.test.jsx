@@ -59,6 +59,15 @@ describe("Button Component", () => {
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
+  it("shows custom loading text when loadingText is provided", () => {
+    render(
+      <Button loading loadingText='Sending...'>
+        Submit
+      </Button>
+    );
+    expect(screen.getByText("Sending...")).toBeInTheDocument();
+  });
+
   it("disables button when loading", () => {
     render(<Button loading>Submit</Button>);
     const button = screen.getByRole("button");

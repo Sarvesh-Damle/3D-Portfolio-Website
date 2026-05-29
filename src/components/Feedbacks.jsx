@@ -2,9 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
+import { SectionHeader } from "@components/common";
 import { styles } from "@styles/styles";
 import { SectionWrapper } from "@hoc";
-import { fadeIn, textVariant } from "@utils/motion";
+import { fadeIn } from "@utils/motion";
 import { testimonials } from "@config/constants";
 
 const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => (
@@ -50,10 +51,7 @@ const Feedbacks = () => {
   return (
     <div className={`mt-12 bg-black-100 rounded-[20px]`}>
       <div className={`bg-tertiary rounded-2xl ${styles.padding} min-h-[300px]`}>
-        <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>What others say</p>
-          <h2 className={styles.sectionHeadText}>Testimonials.</h2>
-        </motion.div>
+        <SectionHeader subText='What others say' headText='Testimonials.' />
       </div>
       <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-7`}>
         {testimonials.map((testimonial, index) => (
@@ -64,4 +62,6 @@ const Feedbacks = () => {
   );
 };
 
-export default SectionWrapper(Feedbacks, "");
+const FeedbacksSection = SectionWrapper(Feedbacks, "");
+
+export default FeedbacksSection;

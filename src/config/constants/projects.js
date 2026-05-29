@@ -1,10 +1,10 @@
-import { carrent, jobit, tripguide, portfolio_website, react_projects_website } from "@assets";
+import { carrent, jobit, portfolio_website, react_projects_website, tripguide } from "@assets";
 
 export const projects = [
   {
     name: "Buddies - A Rental Platform",
     description:
-      "A Rental Platform for finding and renting Flats/PGs/Hostels. Especially designed for students and working professionals. Allows property listing verification and direct owner interaction. Features Maps API integration.",
+      "Student-focused rental platform concept for discovering Flats, PGs, and Hostels with property verification, direct owner interaction, and map-assisted discovery.",
     tags: [
       {
         name: "react",
@@ -19,14 +19,16 @@ export const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide, // Placeholder
-    source_code_link: "https://github.com/Sarvesh-Damle",
-    deployed_url: "https://github.com/Sarvesh-Damle", // Placeholder
+    image: tripguide,
+    source_code_link: "",
+    deployed_url: "",
+    source_label: "Repository not published",
+    demo_label: "Demo not published",
   },
   {
     name: "Green Your Bills",
     description:
-      "Hospital Management System combined with Bill Generation features. The platform primarily serves healthcare providers in handling patient management, insurance claims, billing, and reporting.",
+      "Professional healthcare billing and operations platform work focused on patient workflows, insurance claims, billing flows, reporting, and performance-focused UI modernization.",
     tags: [
       {
         name: "asp.net",
@@ -41,28 +43,36 @@ export const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: jobit, // Placeholder
-    source_code_link: "https://github.com/Sarvesh-Damle",
-    deployed_url: "https://github.com/Sarvesh-Damle",
+    image: jobit,
+    source_code_link: "",
+    deployed_url: "",
+    source_label: "Private client repository",
+    demo_label: "Private production system",
   },
   {
     name: "EZ Order",
     description:
-      "Retail Management Multi-faceted App for Both Android and IOS. Implemented subscription modules and payment gateway integrations.",
+      "React Native retail-management app work covering subscription screens, renewal calculations, Razorpay payment integration, expiry states, and production bug fixes.",
     tags: [
       {
         name: "react-native",
         color: "blue-text-gradient",
       },
+      {
+        name: "razorpay",
+        color: "green-text-gradient",
+      },
     ],
-    image: carrent, // Placeholder
-    source_code_link: "https://github.com/Sarvesh-Damle",
-    deployed_url: "https://github.com/Sarvesh-Damle",
+    image: carrent,
+    source_code_link: "",
+    deployed_url: "",
+    source_label: "Private company repository",
+    demo_label: "Private mobile app",
   },
   {
     name: "3D Portfolio Website",
     description:
-      "Developed and Deployed an immersive 3D portfolio website utilizing React, featuring an intricately designed 3D model and captivating animations. Showcased creative projects and achievements in a visually stunning and interactive manner.",
+      "Interactive portfolio built with React, Three.js, Framer Motion, Tailwind CSS, reusable UI components, validation, tests, and a production Vite build pipeline.",
     tags: [
       {
         name: "react",
@@ -79,12 +89,13 @@ export const projects = [
     ],
     image: portfolio_website,
     source_code_link: "https://github.com/Sarvesh-Damle/3D-Portfolio-Website.git",
-    deployed_url: "https://github.com/Sarvesh-Damle",
+    deployed_url: "",
+    demo_label: "Deployment pending",
   },
   {
     name: "Other Projects",
     description:
-      "Includes Quizzie (Trivia Quiz App), To-do App, Real-Time Space News, Real-Time Video Game Prices and Deals, URL Shortener. Built with React, Node.js, and other modern technologies.",
+      "Collection of smaller React and Node.js projects including Quizzie, a to-do app, real-time space news, game-deals tracking, and a URL shortener.",
     tags: [
       {
         name: "react",
@@ -97,6 +108,7 @@ export const projects = [
     ],
     image: react_projects_website,
     source_code_link: "https://github.com/Sarvesh-Damle/5-React-Projects.git",
-    deployed_url: "https://github.com/Sarvesh-Damle",
+    deployed_url: "",
+    demo_label: "Repository contains project details",
   },
 ];

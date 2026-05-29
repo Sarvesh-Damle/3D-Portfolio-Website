@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { NavLink } from "@components/common";
 import { styles } from "@styles/styles";
 import { navLinks } from "@config/constants";
 import { logo, menu, close } from "@assets";
@@ -35,25 +36,20 @@ const Navbar = () => {
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
+            <NavLink key={nav.id} nav={nav} active={active} onClick={() => setActive(nav.title)} />
           ))}
         </ul>
         {/* This div is for mobile */}
         <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain'
+          <button
+            type='button'
+            aria-label={toggle ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={toggle}
+            className='w-[28px] h-[28px]'
             onClick={() => setToggle(!toggle)}
-          />
+          >
+            <img src={toggle ? close : menu} alt='' className='w-full h-full object-contain' />
+          </button>
 
           <div
             className={`${
@@ -62,18 +58,16 @@ const Navbar = () => {
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {navLinks.map((nav) => (
-                <li
+                <NavLink
                   key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
+                  nav={nav}
+                  active={active}
+                  variant='mobile'
                   onClick={() => {
-                    setToggle(!toggle);
+                    setToggle(false);
                     setActive(nav.title);
                   }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
+                />
               ))}
             </ul>
           </div>

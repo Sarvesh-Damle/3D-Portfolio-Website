@@ -8,8 +8,9 @@ export const experiences = [
     iconBg: "#E6DEDD",
     date: "Sept 2024 - Present",
     points: [
-      "EZOrder (React Native Mobile App): Developed subscription module pages with dynamic fee calculations, renewal adjustments, Razorpay integration, and subscription expiry messages. Resolved multiple bugs to enhance user experience.",
-      "GYB (Green Your Bills) Web App Development: Redesigned a vital bill search page, focusing on UI improvement and performance optimization. Modernized legacy code. Concurrent API calls for efficient processing.",
+      "Built and maintained EZOrder React Native subscription flows, including dynamic fee calculations, renewal adjustments, Razorpay integration, expiry messaging, and production bug fixes.",
+      "Worked on Green Your Bills web application features for healthcare billing workflows, including bill-search UI modernization, performance improvements, legacy code cleanup, and concurrent API processing.",
+      "Collaborated across frontend and backend-facing workflows to debug real production issues and improve operator-facing reliability.",
     ],
   },
 ];

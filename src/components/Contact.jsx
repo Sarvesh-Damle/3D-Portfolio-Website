@@ -1,15 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
-import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion";
-import { validateContactForm } from "../utils/validators";
+import { Button, FormField, SectionHeader } from "@components/common";
+import { EarthCanvas } from "@components/canvas";
+import { SectionWrapper } from "@hoc";
+import { slideIn } from "@utils/motion";
+import { validateContactForm } from "@utils/validators";
 
 const Contact = () => {
-  const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -18,6 +17,7 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { target } = e;
@@ -27,6 +27,7 @@ const Contact = () => {
       ...form,
       [name]: value,
     });
+    setStatus({ type: "", message: "" });
 
     // Clear error for this field when user starts typing
     if (errors[name]) {
@@ -45,30 +46,55 @@ const Contact = () => {
 
     if (!validation.isValid) {
       setErrors(validation.errors);
+      setStatus({
+        type: "error",
+        message: "Please fix the highlighted fields before sending.",
+      });
       return;
     }
 
     // Clear any previous errors
     setErrors({});
+    setStatus({ type: "", message: "" });
+
+    const emailConfig = {
+      serviceId: import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+      templateId: import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+      publicKey: import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
+      siteName: import.meta.env.VITE_APP_SITE_NAME,
+      contactEmail: import.meta.env.VITE_APP_CONTACT_EMAIL,
+    };
+
+    if (!Object.values(emailConfig).every(Boolean)) {
+      setStatus({
+        type: "error",
+        message: "Contact form is not configured yet. Please email me directly.",
+      });
+      return;
+    }
+
     setLoading(true);
 
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        emailConfig.serviceId,
+        emailConfig.templateId,
         {
           from_name: form.name,
-          to_name: import.meta.env.VITE_APP_SITE_NAME,
+          to_name: emailConfig.siteName,
           from_email: form.email,
-          to_email: import.meta.env.VITE_APP_CONTACT_EMAIL,
+          to_email: emailConfig.contactEmail,
           message: form.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        emailConfig.publicKey
       )
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
+          setStatus({
+            type: "success",
+            message: "Thank you. I will get back to you as soon as possible.",
+          });
 
           setForm({
             name: "",
@@ -80,7 +106,10 @@ const Contact = () => {
           setLoading(false);
           console.error(error);
 
-          alert("Ahh, something went wrong. Please try again.");
+          setStatus({
+            type: "error",
+            message: "Something went wrong. Please try again.",
+          });
         }
       );
   };
@@ -91,59 +120,51 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <SectionHeader subText='Get in touch' headText='Contact.' />
 
-        <form ref={formRef} onSubmit={handleSubmit} className='mt-12 flex flex-col gap-8'>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.name ? "border-2 border-red-500" : "border-none"
-              }`}
-            />
-            {errors.name && <span className='text-red-500 text-sm mt-2'>{errors.name}</span>}
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your web address?"
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.email ? "border-2 border-red-500" : "border-none"
-              }`}
-            />
-            {errors.email && <span className='text-red-500 text-sm mt-2'>{errors.email}</span>}
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Message</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What you want to say?'
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.message ? "border-2 border-red-500" : "border-none"
-              }`}
-            />
-            {errors.message && <span className='text-red-500 text-sm mt-2'>{errors.message}</span>}
-          </label>
+        <form onSubmit={handleSubmit} className='mt-12 flex flex-col gap-8'>
+          <FormField
+            label='Your Name'
+            name='name'
+            type='text'
+            value={form.name}
+            onChange={handleChange}
+            placeholder="What's your good name?"
+            error={errors.name}
+          />
+          <FormField
+            label='Your email'
+            name='email'
+            type='email'
+            value={form.email}
+            onChange={handleChange}
+            placeholder="What's your web address?"
+            error={errors.email}
+          />
+          <FormField
+            label='Your Message'
+            name='message'
+            type='textarea'
+            value={form.message}
+            onChange={handleChange}
+            placeholder='What you want to say?'
+            error={errors.message}
+            rows={7}
+          />
 
-          <button
-            type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
+          <Button type='submit' loading={loading} loadingText='Sending...'>
+            Send
+          </Button>
+
+          {status.message && (
+            <p
+              role='status'
+              aria-live='polite'
+              className={`text-sm ${status.type === "success" ? "text-green-400" : "text-red-400"}`}
+            >
+              {status.message}
+            </p>
+          )}
         </form>
       </motion.div>
 
@@ -157,4 +178,6 @@ const Contact = () => {
   );
 };
 
-export default SectionWrapper(Contact, "contact");
+const ContactSection = SectionWrapper(Contact, "contact");
+
+export default ContactSection;

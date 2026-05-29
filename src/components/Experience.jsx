@@ -1,14 +1,12 @@
 import React from "react";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 import "react-vertical-timeline-component/style.min.css";
 
-import { styles } from "@styles/styles";
+import { SectionHeader } from "@components/common";
 import { experiences } from "@config/constants";
 import { SectionWrapper } from "@hoc";
-import { textVariant } from "@utils/motion";
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -65,10 +63,7 @@ ExperienceCard.propTypes = {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>What I have done so far</p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>Work Experience.</h2>
-      </motion.div>
+      <SectionHeader subText='What I have done so far' headText='Work Experience.' align='center' />
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
@@ -81,4 +76,6 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+const ExperienceSection = SectionWrapper(Experience, "work");
+
+export default ExperienceSection;
